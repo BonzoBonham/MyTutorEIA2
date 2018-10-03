@@ -1,6 +1,7 @@
 package com.example.nicolasperez.mytutoreia;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,6 +12,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -55,7 +58,30 @@ public class RegistroAsesor extends AppCompatActivity {
 
 
     public void validar(View view){
+        EditText nombre = (EditText)findViewById(R.id.nombre);
+        EditText nombreCuenta = (EditText)findViewById(R.id.nombreCuenta);
+        EditText PW = (EditText)findViewById(R.id.PW);
+        EditText confirmarPW = (EditText)findViewById(R.id.confirmarPW);
+        EditText correoElectronico = (EditText)findViewById(R.id.correoElectronico);
+        EditText telefono = (EditText)findViewById(R.id.telefono);
+        EditText materias = (EditText)findViewById(R.id.materias);
+        EditText nivel = (EditText)findViewById(R.id.nivel);
+        EditText horario = (EditText)findViewById(R.id.horario);
 
+        if(true) {
+
+        } else{
+            if (PW != confirmarPW) {
+                Context context = getApplicationContext();
+                CharSequence text = "Las contraseñas no coinciden!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else {
+
+            }
+        }
     }
 
 }
