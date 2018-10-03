@@ -11,10 +11,9 @@ public class Estudiante extends Usuario implements Serializable {
     private static final long serialVersionUID = -430667040319669325L;
 
     //Constructor
-    public Estudiante(String nombre, String apellido, String nombreCuenta, String password, String correo
+    public Estudiante(String nombre, String nombreCuenta, String password, String correo
                       ) {
-        super(nombre, apellido, nombreCuenta, password, correo);
-        // TODO Auto-generated constructor stub
+        super(nombre, nombreCuenta, password, correo);
     }
 
     @Override

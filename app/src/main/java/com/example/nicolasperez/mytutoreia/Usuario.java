@@ -12,9 +12,8 @@ public class Usuario implements Serializable{
     private static final long serialVersionUID = 7017874928471195089L;
 
     //Constructor
-    public Usuario(String nombre, String apellido, String nombreCuenta, String password, String correo) {
+    public Usuario(String nombre, String nombreCuenta, String password, String correo) {
         this.nombre = nombre;
-        this.apellido=apellido;
         this.nombreCuenta = nombreCuenta;
         this.password = password;
         this.correo = correo;
@@ -22,7 +21,6 @@ public class Usuario implements Serializable{
 
     //Atributos
     protected String nombre;
-    protected String apellido;
     protected String nombreCuenta;
     protected String password;
     protected String correo;
@@ -31,10 +29,6 @@ public class Usuario implements Serializable{
     //Getters y Setters
     public String getNombre() {
         return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
     }
 
     public String getNombreCuenta() {

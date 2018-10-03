@@ -55,12 +55,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void hacerLogin(View view){
 
+        Intent intent = getIntent();
+        Usuario user = (Usuario) intent.getSerializableExtra("nuevoUsuario");
+
+        if (user == null){
+            user = new Tutor("admin","admin","admin","admin","admin","admin","admin","admin" );
+        }
+
         EditText username = (EditText)findViewById(R.id.correo);
         EditText password = (EditText)findViewById(R.id.password);
 
-        if(username.getText().toString().equals("hola@hola.com") && password.getText().toString().equals("1234")){
-            Intent intent = new Intent(this, PaginaPerfil.class);
-            startActivity(intent);
+        if(username.getText().toString().equals(user.getNombreCuenta()) && password.getText().toString().equals(user.getPassword())){
+            Intent i = new Intent(this, PaginaPerfil.class);
+            i.putExtra("nuevoUsuario2", user);
+            startActivity(i);
+
         }
         else {
             Context context = getApplicationContext();
@@ -71,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
         }
     }
+
+    //TODO: Actualizar los extras, desde un serializable a un arreglo de serializables y que lo recorra todo el login.
 
     public void pasarVentanaRegistro(View view){
             Intent intent = new Intent(this, RegistroGeneral.class);

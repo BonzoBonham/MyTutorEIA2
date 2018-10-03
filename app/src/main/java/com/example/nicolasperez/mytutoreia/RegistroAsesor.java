@@ -16,7 +16,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RegistroAsesor extends AppCompatActivity {
 
@@ -57,6 +59,7 @@ public class RegistroAsesor extends AppCompatActivity {
     }
 
 
+
     public void validar(View view){
         EditText nombre = (EditText)findViewById(R.id.nombre);
         EditText nombreCuenta = (EditText)findViewById(R.id.nombreCuenta);
@@ -68,18 +71,42 @@ public class RegistroAsesor extends AppCompatActivity {
         EditText nivel = (EditText)findViewById(R.id.nivel);
         EditText horario = (EditText)findViewById(R.id.horario);
 
-        if(true) {
 
+
+
+
+        if(nombre.getText().toString().equals("") || nombreCuenta.getText().toString().equals("") || PW.getText().toString().equals("") || confirmarPW.getText().toString().equals("")
+                || correoElectronico.getText().toString().equals("")|| telefono.getText().toString().equals("")
+                || materias.getText().toString().equals("")|| nivel.getText().toString().equals("")|| horario.getText().toString().equals("")) {
+
+            Context context = getApplicationContext();
+            CharSequence text = "Llene todos los campos!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         } else{
-            if (PW != confirmarPW) {
+            if (PW.getText().toString().equals(confirmarPW.getText().toString()) == false) {
                 Context context = getApplicationContext();
-                CharSequence text = "Las contraseñas no coinciden!";
+                CharSequence text = "Que carajos";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             } else {
+                Usuario dank = new Tutor(nombre.getText().toString(), nombreCuenta.getText().toString(), PW.getText().toString(), correoElectronico.getText().toString(),
+                        telefono.getText().toString(), materias.getText().toString(), nivel.getText().toString(), horario.getText().toString());
 
+                Context context = getApplicationContext();
+                CharSequence text = "Nuevo Usuario Creado";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("nuevoUsuario", dank);
+                startActivity(intent);
             }
         }
     }
